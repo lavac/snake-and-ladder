@@ -1,5 +1,9 @@
 package com.games.snakeandladder;
 
+import com.games.snakeandladder.entity.Dice;
+import com.games.snakeandladder.entity.Player;
+import com.games.snakeandladder.entity.SnakeAndLadderBoard;
+
 public class SnakeAndLadderGame {
 
   static final int DEFAULT_SIZE = 100;

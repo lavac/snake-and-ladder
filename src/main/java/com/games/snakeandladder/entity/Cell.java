@@ -1,4 +1,4 @@
-package com.games.snakeandladder;
+package com.games.snakeandladder.entity;
 
 public class Cell {
   private int id;

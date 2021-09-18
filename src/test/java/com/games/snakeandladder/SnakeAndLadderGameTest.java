@@ -1,5 +1,8 @@
 package com.games.snakeandladder;
 
+import com.games.snakeandladder.entity.Dice;
+import com.games.snakeandladder.entity.Player;
+import com.games.snakeandladder.entity.SnakeAndLadderBoard;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
