@@ -16,7 +16,7 @@ public class SnakeAndLadderGame {
   }
 
   public void start() {
-    while (!isGameCompleted()) {
+    while (!isGameOver()) {
       int diceRolledNumber = dice.roll();
       int positionToBeMoved = board.getNewPosition(diceRolledNumber, player.getCurrentPosition());
       player.incrementNumberOfTurns();
@@ -24,7 +24,15 @@ public class SnakeAndLadderGame {
     }
   }
 
-  public boolean isGameCompleted() {
-    return  (player.getNumberOfTurns() == MAXIMUM_TURNS || player.getCurrentPosition() == DEFAULT_SIZE-1);
+  public boolean isGameOver() {
+    if (player.getCurrentPosition() == DEFAULT_SIZE - 1) {
+      System.out.printf("Player name:%s playerId:%s Won the game%n", player.getName(), player.getId());
+      return true;
+    }
+    else if (player.getNumberOfTurns() == MAXIMUM_TURNS) {
+      System.out.printf("Game is over, reached maximum turns %s", MAXIMUM_TURNS);
+      return true;
+    }
+    return false;
   }
 }

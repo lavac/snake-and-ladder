@@ -18,7 +18,7 @@ class SnakeAndLadderGameTest {
   void shouldTerminateTheGameWhenNumberOfTurnsReachesMaximumTurns() {
     when(player.getNumberOfTurns()).thenReturn(10);
     game.start();
-    Assertions.assertTrue(game.isGameCompleted());
+    Assertions.assertTrue(game.isGameOver());
   }
 
   @Test
@@ -26,7 +26,7 @@ class SnakeAndLadderGameTest {
     when(player.getNumberOfTurns()).thenReturn(5);
     when(player.getCurrentPosition()).thenReturn(99);
     game.start();
-    Assertions.assertTrue(game.isGameCompleted());
+    Assertions.assertTrue(game.isGameOver());
   }
 
     @Test
