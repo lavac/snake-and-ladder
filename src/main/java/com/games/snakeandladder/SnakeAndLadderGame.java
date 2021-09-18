@@ -5,11 +5,13 @@ public class SnakeAndLadderGame {
   static final int DEFAULT_SIZE = 100;
   static final int MAXIMUM_TURNS = 10;
 
-  SnakeAndLadderBoard board;
-  Player player;
+  private SnakeAndLadderBoard board;
+  private Player player;
+  private Dice dice;
 
-  public SnakeAndLadderGame(Player player) {
-    this.board = new SnakeAndLadderBoard(DEFAULT_SIZE);
+  public SnakeAndLadderGame(SnakeAndLadderBoard snakeAndLadderBoard, Dice dice, Player player) {
+    this.board = snakeAndLadderBoard;
+    this.dice = dice;
     this.player = player;
   }
 

@@ -9,8 +9,10 @@ import static org.mockito.Mockito.when;
 class SnakeAndLadderGameTest {
 
   Player player = mock(Player.class);
+  SnakeAndLadderBoard snakeAndLadderBoard = mock(SnakeAndLadderBoard.class);
+  Dice dice = mock(Dice.class);
 
-  SnakeAndLadderGame game = new SnakeAndLadderGame(player);
+  SnakeAndLadderGame game = new SnakeAndLadderGame(snakeAndLadderBoard, dice, player);
 
   @Test
   void shouldTerminateTheGameWhenNumberOfTurnsReachesMaximumTurns() {
@@ -26,4 +28,5 @@ class SnakeAndLadderGameTest {
     game.start();
     Assertions.assertTrue(game.isGameCompleted());
   }
+
 }
