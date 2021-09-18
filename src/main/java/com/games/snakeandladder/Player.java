@@ -1,10 +1,10 @@
 package com.games.snakeandladder;
 
-import lombok.Getter;
+import lombok.Data;
 
 import java.util.UUID;
 
-@Getter
+@Data
 public class Player {
   private UUID id;
   private int numberOfTurns;
@@ -16,5 +16,9 @@ public class Player {
     this.name = name;
     this.currentPosition = 0;
     this.numberOfTurns = 0;
+  }
+
+  public void incrementNumberOfTurns() {
+    
   }
 }

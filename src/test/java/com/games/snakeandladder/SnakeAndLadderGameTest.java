@@ -3,8 +3,8 @@ package com.games.snakeandladder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.*;
 
 class SnakeAndLadderGameTest {
 
@@ -29,4 +29,17 @@ class SnakeAndLadderGameTest {
     Assertions.assertTrue(game.isGameCompleted());
   }
 
+    @Test
+  void shouldUpdatePlayersPositionAfterRollingTheDice() {
+    when(player.getNumberOfTurns()).thenReturn(9).thenReturn(10);
+    when(player.getCurrentPosition()).thenReturn(26);
+    when(dice.roll()).thenReturn(4);
+    when(player.getCurrentPosition()).thenReturn(20);
+    when(snakeAndLadderBoard.getNewPosition(eq(4), eq(20))).thenReturn(24);
+
+    game.start();
+
+    verify(snakeAndLadderBoard).getNewPosition(4, 20);
+    verify(player).setCurrentPosition(24);
+    }
 }
