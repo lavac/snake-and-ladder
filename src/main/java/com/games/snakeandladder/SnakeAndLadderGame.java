@@ -4,7 +4,6 @@ public class SnakeAndLadderGame {
 
   static final int DEFAULT_SIZE = 100;
   static final int MAXIMUM_TURNS = 10;
-  int numberOfTurns = 0;
 
   SnakeAndLadderBoard board;
   Player player;
@@ -17,11 +16,10 @@ public class SnakeAndLadderGame {
   public void start() {
     while (!isGameCompleted()) {
 
-      numberOfTurns++;
     }
   }
 
   public boolean isGameCompleted() {
-    return  (numberOfTurns == MAXIMUM_TURNS);
+    return  (player.getNumberOfTurns() == MAXIMUM_TURNS || player.getCurrentPosition() == DEFAULT_SIZE-1);
   }
 }

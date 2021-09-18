@@ -7,6 +7,7 @@ import java.util.UUID;
 @Getter
 public class Player {
   private UUID id;
+  private int numberOfTurns;
   private int currentPosition;
   private String name;
 
@@ -14,5 +15,6 @@ public class Player {
     this.id = UUID.randomUUID();
     this.name = name;
     this.currentPosition = 0;
+    this.numberOfTurns = 0;
   }
 }
