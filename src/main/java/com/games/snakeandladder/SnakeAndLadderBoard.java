@@ -11,7 +11,7 @@ public class SnakeAndLadderBoard {
     }
   }
 
-  public int getNewPosition(int number, int currentPosition) {
-    return 0;
+  public int getNewPosition(int rolledNumber, int currentPosition) {
+    return rolledNumber + currentPosition;
   }
 }
