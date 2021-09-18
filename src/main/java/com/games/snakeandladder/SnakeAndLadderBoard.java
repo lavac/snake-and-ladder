@@ -1,14 +1,13 @@
 package com.games.snakeandladder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SnakeAndLadderBoard {
-  List<Cell> cells = new ArrayList();
+  Cell[] cells;
 
   public SnakeAndLadderBoard(int size) {
+    cells = new Cell[size];
+
     for (int id =0; id < size; id++) {
-      cells.add(new Cell(id));
+      cells[0] = new Cell(id);
     }
   }
 }
