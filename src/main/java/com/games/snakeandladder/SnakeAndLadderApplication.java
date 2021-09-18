@@ -4,5 +4,7 @@ public class SnakeAndLadderApplication {
 
   public static void main(String[] args) {
 
+    SnakeAndLadderGame game = new SnakeAndLadderGame();
+
   }
 }
