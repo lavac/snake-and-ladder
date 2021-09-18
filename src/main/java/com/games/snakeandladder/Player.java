@@ -19,6 +19,6 @@ public class Player {
   }
 
   public void incrementNumberOfTurns() {
-    
+    numberOfTurns = numberOfTurns + 1;
   }
 }
