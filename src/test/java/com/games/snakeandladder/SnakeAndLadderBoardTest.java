@@ -5,11 +5,17 @@ import org.junit.jupiter.api.Test;
 
 class SnakeAndLadderBoardTest {
 
-  SnakeAndLadderBoard snakeAndLadderBoard = new SnakeAndLadderBoard(10);
+  SnakeAndLadderBoard snakeAndLadderBoard = new SnakeAndLadderBoard(100);
 
   @Test
   void shouldGetTheUpdatedPosition() {
-    int newPosition = snakeAndLadderBoard.getNewPosition(14, 4);
+    int newPosition = snakeAndLadderBoard.getNewPosition(4, 14);
     Assertions.assertEquals(18, newPosition);
+  }
+
+  @Test
+  void shouldGiveTheCurrentPositionIfNewPositionIsGreaterThanTheBoardSize() {
+    int newPosition = snakeAndLadderBoard.getNewPosition(5, 97);
+    Assertions.assertEquals(97, newPosition);
   }
 }
