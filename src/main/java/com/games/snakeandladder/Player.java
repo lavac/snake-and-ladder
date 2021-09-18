@@ -1,7 +1,10 @@
 package com.games.snakeandladder;
 
+import lombok.Getter;
+
 import java.util.UUID;
 
+@Getter
 public class Player {
   private UUID id;
   private int currentPosition;

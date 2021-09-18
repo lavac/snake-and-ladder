@@ -6,5 +6,6 @@ public class SnakeAndLadderApplication {
     Player player = new Player("Player1");
 
     SnakeAndLadderGame game = new SnakeAndLadderGame(player);
+    game.start();
   }
 }
