@@ -1,14 +1,13 @@
 package com.games.snakeandladder.exception;
 
 public class InvalidSnakeStartPositionException extends RuntimeException {
-  private String message;
 
-  public InvalidSnakeStartPositionException(int startingPosition, int size) {
-    this.message = String.format("Starting position %d should be greater than zero and less than the board size %d",
-        startingPosition, size);
+  public InvalidSnakeStartPositionException(int startPosition, int size) {
+    super(String.format("Error :- Invalid Snake's Start position:%d, it should be greater than zero and" +
+            " less than the board size:%d", startPosition, size));
   }
 
   public InvalidSnakeStartPositionException() {
-    this.message = "Starting position should be greater than zero";
+    super("Error :- Invalid Snake's Start position, it should be greater than zero");
   }
 }

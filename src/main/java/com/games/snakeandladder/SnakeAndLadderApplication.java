@@ -6,6 +6,7 @@ import com.games.snakeandladder.exception.InvalidSnakeEndPositionException;
 import com.games.snakeandladder.exception.InvalidSnakeStartPositionException;
 import java.util.Scanner;
 import static com.games.snakeandladder.Constants.DEFAULT_SIZE;
+import static com.games.snakeandladder.Constants.PLAYER_NAME;
 
 public class SnakeAndLadderApplication {
 
@@ -19,7 +20,7 @@ public class SnakeAndLadderApplication {
       snake.setEndPosition(endPosition);
       SnakeAndLadderBoard snakeAndLadderBoard = new SnakeAndLadderBoard(DEFAULT_SIZE);
       snakeAndLadderBoard.addSnake(snake);
-      Player player = new Player("Player1");
+      Player player = new Player(PLAYER_NAME);
       String diceTypeInString = scanner.next();
       DiceType diceType = DiceType.getDiceType(diceTypeInString);
       Dice dice = DiceFactory.get(diceType);
