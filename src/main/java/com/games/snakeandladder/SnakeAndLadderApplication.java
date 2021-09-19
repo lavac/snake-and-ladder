@@ -1,6 +1,6 @@
 package com.games.snakeandladder;
 
-import com.games.snakeandladder.entity.Dice;
+import com.games.snakeandladder.entity.StraightDice;
 import com.games.snakeandladder.entity.Player;
 import com.games.snakeandladder.entity.Snake;
 import com.games.snakeandladder.entity.SnakeAndLadderBoard;
@@ -23,8 +23,8 @@ public class SnakeAndLadderApplication {
       SnakeAndLadderBoard snakeAndLadderBoard = new SnakeAndLadderBoard(DEFAULT_SIZE);
       snakeAndLadderBoard.addSnake(snake);
       Player player = new Player("Player1");
-      Dice dice = new Dice();
-      SnakeAndLadderGame game = new SnakeAndLadderGame(snakeAndLadderBoard, dice, player);
+      StraightDice straightDice = new StraightDice();
+      SnakeAndLadderGame game = new SnakeAndLadderGame(snakeAndLadderBoard, straightDice, player);
       game.start();
     } catch (InvalidSnakeStartingPositionException ex) {
       System.out.println("Starting position of the snake should be greater than zero and less than the board size");

@@ -1,6 +1,6 @@
 package com.games.snakeandladder;
 
-import com.games.snakeandladder.entity.Dice;
+import com.games.snakeandladder.entity.StraightDice;
 import com.games.snakeandladder.entity.Player;
 import com.games.snakeandladder.entity.SnakeAndLadderBoard;
 import org.junit.jupiter.api.Assertions;
@@ -13,9 +13,9 @@ class SnakeAndLadderGameTest {
 
   Player player = mock(Player.class);
   SnakeAndLadderBoard snakeAndLadderBoard = mock(SnakeAndLadderBoard.class);
-  Dice dice = mock(Dice.class);
+  StraightDice straightDice = mock(StraightDice.class);
 
-  SnakeAndLadderGame game = new SnakeAndLadderGame(snakeAndLadderBoard, dice, player);
+  SnakeAndLadderGame game = new SnakeAndLadderGame(snakeAndLadderBoard, straightDice, player);
 
   @Test
   void shouldTerminateTheGameWhenNumberOfTurnsReachesMaximumTurns() {
@@ -36,7 +36,7 @@ class SnakeAndLadderGameTest {
   void shouldUpdatePlayersPositionAfterRollingTheDice() {
     when(player.getNumberOfTurns()).thenReturn(9).thenReturn(10);
     when(player.getCurrentPosition()).thenReturn(26);
-    when(dice.roll()).thenReturn(4);
+    when(straightDice.roll()).thenReturn(4);
     when(player.getCurrentPosition()).thenReturn(20);
     when(snakeAndLadderBoard.getNewPosition(eq(4), eq(20))).thenReturn(24);
 

@@ -1,6 +1,6 @@
 package com.games.snakeandladder;
 
-import com.games.snakeandladder.entity.Dice;
+import com.games.snakeandladder.entity.StraightDice;
 import com.games.snakeandladder.entity.Player;
 import com.games.snakeandladder.entity.SnakeAndLadderBoard;
 
@@ -11,17 +11,17 @@ public class SnakeAndLadderGame {
 
   private SnakeAndLadderBoard board;
   private Player player;
-  private Dice dice;
+  private StraightDice straightDice;
 
-  public SnakeAndLadderGame(SnakeAndLadderBoard snakeAndLadderBoard, Dice dice, Player player) {
+  public SnakeAndLadderGame(SnakeAndLadderBoard snakeAndLadderBoard, StraightDice straightDice, Player player) {
     this.board = snakeAndLadderBoard;
-    this.dice = dice;
+    this.straightDice = straightDice;
     this.player = player;
   }
 
   public void start() {
     while (!isGameOver()) {
-      int diceRolledNumber = dice.roll();
+      int diceRolledNumber = straightDice.roll();
       int positionToBeMoved = board.getNewPosition(diceRolledNumber, player.getCurrentPosition());
       player.incrementNumberOfTurns();
       player.setCurrentPosition(positionToBeMoved);
