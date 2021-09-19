@@ -16,12 +16,6 @@ public class SnakeTest {
   }
 
   @Test
-  void shouldNotSetStartingPositionIfItIsEqualToZero() {
-    snake.setStartPosition(0);
-    Assertions.assertEquals(0, snake.getStartPosition());
-  }
-
-  @Test
   void shouldSetEndingPositionIfItIsLessThanStartingPosition() {
     snake.setStartPosition(40);
     snake.setEndPosition(20);
@@ -29,31 +23,47 @@ public class SnakeTest {
   }
 
   @Test
+  void shouldNotSetEndingPositionIfItIsLessThanZero() {
+    snake.setStartPosition(40);
+    InvalidSnakeEndPositionException exception = Assertions.assertThrows(InvalidSnakeEndPositionException.class,
+        () -> snake.setEndPosition(-6));
+    Assertions.assertEquals("Error :- Invalid Snake's end position:-6, it should be less than" +
+        " the start position:40 and should not be less than zero", exception.getMessage());
+  }
+
+  @Test
   void shouldNotSetEndingPositionIfItIsGreaterThanStartingPosition() {
     snake.setStartPosition(40);
-    snake.setEndPosition(60);
-    Assertions.assertEquals(0, snake.getEndPosition());
+    InvalidSnakeEndPositionException exception = Assertions.assertThrows(InvalidSnakeEndPositionException.class,
+        () -> snake.setEndPosition(60));
+    Assertions.assertEquals("Error :- Invalid Snake's end position:60, it should be less than" +
+    " the start position:40 and should not be less than zero", exception.getMessage());
   }
 
   @Test
-  void shouldNotSetEndingPositionIfItIsEqualToStartingPosition() {
+  void shouldThrowExceptionWhenEndingPositionIsEqualToStartingPosition() {
     snake.setStartPosition(40);
-    snake.setEndPosition(40);
-    Assertions.assertEquals(0, snake.getEndPosition());
+    InvalidSnakeEndPositionException exception = Assertions.assertThrows(InvalidSnakeEndPositionException.class,
+        () -> snake.setEndPosition(40));
+    Assertions.assertEquals("Error :- Invalid Snake's end position:40, it should be less than" +
+        " the start position:40 and should not be less than zero", exception.getMessage());
   }
 
   @Test
-  void shouldThrowExceptionWhenStartingPositionIsNotGreaterThanZero() {
+  void shouldThrowExceptionWhenStartingPositionIsZero() {
     Snake snake = new Snake();
-    Assertions.assertThrows(InvalidSnakeStartPositionException.class,
+    InvalidSnakeStartPositionException exception = Assertions.assertThrows(InvalidSnakeStartPositionException.class,
         () -> snake.setStartPosition(0));
+    Assertions.assertEquals("Error :- Invalid Snake's Start position, it should be greater than zero",
+        exception.getMessage());
   }
 
   @Test
-  void shouldThrowExceptionWhenEndingPositionIsNotLessThanTheStartingPosition() {
+  void shouldThrowExceptionWhenStartingPositionIsLessThanZero() {
     Snake snake = new Snake();
-    snake.setStartPosition(50);
-    Assertions.assertThrows(InvalidSnakeEndPositionException.class,
-        () -> snake.setEndPosition(50));
+    InvalidSnakeStartPositionException exception = Assertions.assertThrows(InvalidSnakeStartPositionException.class,
+        () -> snake.setStartPosition(-5));
+    Assertions.assertEquals("Error :- Invalid Snake's Start position, it should be greater than zero",
+        exception.getMessage());
   }
 }

@@ -4,19 +4,21 @@ import com.games.snakeandladder.exception.InvalidSnakeStartPositionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 class SnakeAndLadderBoardTest {
 
   SnakeAndLadderBoard snakeAndLadderBoard = new SnakeAndLadderBoard(100);
 
   @Test
   void shouldGetTheUpdatedPosition() {
-    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 14);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 14, UUID.randomUUID());
     Assertions.assertEquals(18, newPosition);
   }
 
   @Test
   void shouldGiveTheCurrentPositionIfNewPositionIsGreaterThanTheBoardSize() {
-    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(5, 97);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(5, 97, UUID.randomUUID());
     Assertions.assertEquals(97, newPosition);
   }
 
@@ -35,8 +37,10 @@ class SnakeAndLadderBoardTest {
     Snake snake = new Snake();
     snake.setStartPosition(100);
     snake.setEndPosition(49);
-    Assertions.assertThrows(InvalidSnakeStartPositionException.class,
+    InvalidSnakeStartPositionException exception = Assertions.assertThrows(InvalidSnakeStartPositionException.class,
         () -> snakeAndLadderBoard.addSnake(snake));
+    Assertions.assertEquals("Error :- Invalid Snake's Start position:100," +
+        " it should be greater than zero and less than the board size:100", exception.getMessage());
   }
 
   @Test
@@ -45,7 +49,7 @@ class SnakeAndLadderBoardTest {
     snake.setStartPosition(68);
     snake.setEndPosition(49);
     snakeAndLadderBoard.addSnake(snake);
-    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 64);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 64, UUID.randomUUID());
     Assertions.assertEquals(49, newPosition);
   }
 }

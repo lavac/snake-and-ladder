@@ -1,6 +1,5 @@
 package com.games.snakeandladder.entity;
 
-import com.games.snakeandladder.entity.DiceType;
 import com.games.snakeandladder.exception.InvalidDiceTypeException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,9 @@ class DiceTypeTest {
 
   @Test
   void shouldThrowExceptionWhenInputStringIsInvalid() {
-    Assertions.assertThrows(InvalidDiceTypeException.class,
+    InvalidDiceTypeException exception = Assertions.assertThrows(InvalidDiceTypeException.class,
         () -> DiceType.getDiceType("InvalidType"));
+    Assertions.assertEquals("Error :- Invalid dice type, valid types are Straight and Crooked",
+        exception.getMessage());
   }
 }
