@@ -2,6 +2,7 @@ package com.games.snakeandladder;
 
 import com.games.snakeandladder.entity.CrookedDice;
 import com.games.snakeandladder.entity.Dice;
+import com.games.snakeandladder.entity.DiceType;
 import com.games.snakeandladder.entity.StraightDice;
 
 public class DiceFactory {

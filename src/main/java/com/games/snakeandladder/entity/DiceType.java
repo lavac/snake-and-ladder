@@ -1,11 +1,11 @@
-package com.games.snakeandladder;
+package com.games.snakeandladder.entity;
 
 import com.games.snakeandladder.exception.InvalidDiceTypeException;
 
 public enum DiceType {
   STRAIGHT, CROOKED;
 
-  static DiceType getDiceType(String diceType) {
+  public static DiceType getDiceType(String diceType) {
     for(DiceType type : values()) {
       if(type.toString().equalsIgnoreCase(diceType)) {
         return type;

@@ -1,5 +1,6 @@
-package com.games.snakeandladder;
+package com.games.snakeandladder.entity;
 
+import com.games.snakeandladder.entity.DiceType;
 import com.games.snakeandladder.exception.InvalidDiceTypeException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
