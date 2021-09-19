@@ -38,11 +38,11 @@ class SnakeAndLadderGameTest {
     when(player.getCurrentPosition()).thenReturn(26);
     when(dice.roll()).thenReturn(4);
     when(player.getCurrentPosition()).thenReturn(20);
-    when(snakeAndLadderBoard.getNewPosition(eq(4), eq(20))).thenReturn(24);
+    when(snakeAndLadderBoard.getThePositionToBeMoved(eq(4), eq(20))).thenReturn(24);
 
     game.start();
 
-    verify(snakeAndLadderBoard).getNewPosition(4, 20);
-    verify(player).setCurrentPosition(24);
+    verify(snakeAndLadderBoard).getThePositionToBeMoved(4, 20);
+    verify(player).move(24);
     }
 }

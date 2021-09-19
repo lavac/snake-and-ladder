@@ -7,9 +7,9 @@ import java.util.UUID;
 @Data
 public class Player {
   private UUID id;
+  private String name;
   private int numberOfTurns;
   private int currentPosition;
-  private String name;
 
   public Player(String name) {
     this.id = UUID.randomUUID();
@@ -20,5 +20,9 @@ public class Player {
 
   public void incrementNumberOfTurns() {
     numberOfTurns = numberOfTurns + 1;
+  }
+
+  public void move(int positionToBeMoved) {
+    this.currentPosition = positionToBeMoved;
   }
 }

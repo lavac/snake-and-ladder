@@ -10,13 +10,13 @@ class SnakeAndLadderBoardTest {
 
   @Test
   void shouldGetTheUpdatedPosition() {
-    int newPosition = snakeAndLadderBoard.getNewPosition(4, 14);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 14);
     Assertions.assertEquals(18, newPosition);
   }
 
   @Test
   void shouldGiveTheCurrentPositionIfNewPositionIsGreaterThanTheBoardSize() {
-    int newPosition = snakeAndLadderBoard.getNewPosition(5, 97);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(5, 97);
     Assertions.assertEquals(97, newPosition);
   }
 
@@ -45,7 +45,7 @@ class SnakeAndLadderBoardTest {
     snake.setStartingPosition(68);
     snake.setEndingPosition(49);
     snakeAndLadderBoard.addSnake(snake);
-    int newPosition = snakeAndLadderBoard.getNewPosition(4, 64);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 64);
     Assertions.assertEquals(49, newPosition);
   }
 }

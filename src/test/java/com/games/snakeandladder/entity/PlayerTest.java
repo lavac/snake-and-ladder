@@ -1,6 +1,5 @@
 package com.games.snakeandladder.entity;
 
-import com.games.snakeandladder.entity.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,5 +12,11 @@ class PlayerTest {
     player.setNumberOfTurns(4);
     player.incrementNumberOfTurns();
     Assertions.assertEquals(5, player.getNumberOfTurns());
+  }
+
+  @Test
+  void shouldMoveThePlayerToThePositionPassed() {
+    player.move(56);
+    Assertions.assertEquals(56, player.getCurrentPosition());
   }
 }

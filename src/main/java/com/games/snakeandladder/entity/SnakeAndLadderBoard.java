@@ -15,20 +15,17 @@ public class SnakeAndLadderBoard {
     }
   }
 
-  public int getNewPosition(int rolledNumber, int currentPosition) {
-    Snake snake;
-    int newPosition = rolledNumber + currentPosition;
-    Cell cell = getCell(newPosition);
-    if (cell == null) {
-      return currentPosition;
-    }
-    else {
-      snake = cell.getSnake();
-      if (snake != null) {
-        return snake.getEndingPosition();
-      }
-      return newPosition;
-    }
+  public int getThePositionToBeMoved(int rolledNumber, int currentPosition) {
+    int positionToBeMoved = rolledNumber + currentPosition;
+    Cell cellToBeMoved = getCell(positionToBeMoved);
+    return  (cellToBeMoved == null)
+        ? currentPosition
+        : getTheUpdatedPositionAfterGoingThroughTheSnake(positionToBeMoved, cellToBeMoved);
+  }
+
+  private int getTheUpdatedPositionAfterGoingThroughTheSnake(int positionToBeMoved, Cell cellToBeMoved) {
+    Snake snake = cellToBeMoved.getSnake();
+    return  (snake != null) ? snake.getEndingPosition() : positionToBeMoved;
   }
 
   public void addSnake(Snake snake) {
