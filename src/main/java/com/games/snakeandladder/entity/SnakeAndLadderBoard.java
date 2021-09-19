@@ -16,19 +16,32 @@ public class SnakeAndLadderBoard {
   }
 
   public int getNewPosition(int rolledNumber, int currentPosition) {
+    Snake snake;
     int newPosition = rolledNumber + currentPosition;
-    return (newPosition < size)? newPosition: currentPosition;
+    Cell cell = getCell(newPosition);
+    if (cell == null) {
+      return currentPosition;
+    }
+    else {
+      snake = cell.getSnake();
+      if (snake != null) {
+        return snake.getEndingPosition();
+      }
+      return newPosition;
+    }
   }
 
   public void addSnake(Snake snake) {
     int startingPosition = snake.getStartingPosition();
-    if (startingPosition < size-1) {
       Cell cell = getCell(startingPosition);
+    if (cell != null) {
       cell.setSnake(snake);
-    } else throw new InvalidSnakeStartingPositionException(startingPosition, size);
+    } else {
+      throw new InvalidSnakeStartingPositionException(startingPosition, size);
+    }
   }
 
   public Cell getCell(int id) {
-    return cells[id];
+    return  (id < size) ? cells[id]: null;
   }
 }

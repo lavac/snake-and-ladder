@@ -31,11 +31,21 @@ class SnakeAndLadderBoardTest {
   }
 
   @Test
-  void shouldThrowExceptionWhenStartingPositionEqualToTheEndOfTheBoard() {
+  void shouldThrowExceptionWhenStartingPositionIsOutOfTheBoard() {
     Snake snake = new Snake();
-    snake.setStartingPosition(99);
+    snake.setStartingPosition(100);
     snake.setEndingPosition(49);
     Assertions.assertThrows(InvalidSnakeStartingPositionException.class,
         () -> snakeAndLadderBoard.addSnake(snake));
+  }
+
+  @Test
+  void shouldGetTheSnakeEndingPositionAsNewPositionAfterGoingThroughTheSnake() {
+    Snake snake = new Snake();
+    snake.setStartingPosition(68);
+    snake.setEndingPosition(49);
+    snakeAndLadderBoard.addSnake(snake);
+    int newPosition = snakeAndLadderBoard.getNewPosition(4, 64);
+    Assertions.assertEquals(49, newPosition);
   }
 }
