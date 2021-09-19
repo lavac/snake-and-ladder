@@ -11,6 +11,6 @@ public enum DiceType {
         return type;
       }
     }
-    throw new InvalidDiceTypeException("Entered invalid dice type,Valid types are Straight and Crooked");
+    throw new InvalidDiceTypeException("Entered invalid dice type, valid types are Straight and Crooked");
   }
 }
