@@ -25,11 +25,9 @@ public class SnakeAndLadderApplication {
       Dice dice = DiceFactory.get(diceType1);
       SnakeAndLadderGame game = new SnakeAndLadderGame(snakeAndLadderBoard, dice, player);
       game.start();
-    } catch (InvalidSnakeStartingPositionException ex) {
-      System.out.println("Starting position of the snake should be greater than zero and less than the board size");
-    } catch (InvalidSnakeEndingPositionException ex) {
-      System.out.println("Ending position should be less than the starting position and greater than or equal to zero");
-    } catch (InvalidDiceTypeException exception) {
+    } catch (InvalidSnakeStartingPositionException
+        | InvalidSnakeEndingPositionException
+        | InvalidDiceTypeException exception) {
       System.out.println(exception.getMessage());
     }
   }

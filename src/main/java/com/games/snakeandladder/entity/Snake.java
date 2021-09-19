@@ -13,7 +13,7 @@ public class Snake {
     if (startingPosition > 0 ) {
       this.startingPosition = startingPosition;
     }
-    else throw new InvalidSnakeStartingPositionException("Starting position should be greater than zero");
+    else throw new InvalidSnakeStartingPositionException();
   }
 
   public void setEndingPosition(int endingPosition) {
