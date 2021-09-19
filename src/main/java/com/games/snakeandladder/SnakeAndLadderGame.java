@@ -3,12 +3,10 @@ package com.games.snakeandladder;
 import com.games.snakeandladder.entity.Dice;
 import com.games.snakeandladder.entity.Player;
 import com.games.snakeandladder.entity.SnakeAndLadderBoard;
+import static com.games.snakeandladder.Constants.DEFAULT_SIZE;
+import static com.games.snakeandladder.Constants.MAXIMUM_TURNS;
 
 public class SnakeAndLadderGame {
-
-  static final int DEFAULT_SIZE = 100;
-  static final int MAXIMUM_TURNS = 10;
-
   private SnakeAndLadderBoard board;
   private Player player;
   private Dice dice;

@@ -4,13 +4,12 @@ import com.games.snakeandladder.entity.*;
 import com.games.snakeandladder.exception.InvalidDiceTypeException;
 import com.games.snakeandladder.exception.InvalidSnakeEndingPositionException;
 import com.games.snakeandladder.exception.InvalidSnakeStartingPositionException;
-
 import java.util.Scanner;
+import static com.games.snakeandladder.Constants.DEFAULT_SIZE;
 
 public class SnakeAndLadderApplication {
 
   public static void main(String[] args) {
-    final int DEFAULT_SIZE = 100;
     try {
       Scanner scanner = new Scanner(System.in);
       int startingIndex = scanner.nextInt();
