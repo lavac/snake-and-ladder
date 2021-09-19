@@ -1,25 +1,25 @@
 package com.games.snakeandladder.entity;
 
-import com.games.snakeandladder.exception.InvalidSnakeEndingPositionException;
-import com.games.snakeandladder.exception.InvalidSnakeStartingPositionException;
+import com.games.snakeandladder.exception.InvalidSnakeEndPositionException;
+import com.games.snakeandladder.exception.InvalidSnakeStartPositionException;
 import lombok.Data;
 
 @Data
 public class Snake {
-  private int startingPosition;
-  private int endingPosition;
+  private int startPosition;
+  private int endPosition;
 
-  public void setStartingPosition(int startingPosition) {
-    if (startingPosition > 0 ) {
-      this.startingPosition = startingPosition;
+  public void setStartPosition(int startPosition) {
+    if (startPosition > 0 ) {
+      this.startPosition = startPosition;
     }
-    else throw new InvalidSnakeStartingPositionException();
+    else throw new InvalidSnakeStartPositionException();
   }
 
-  public void setEndingPosition(int endingPosition) {
-    if (endingPosition < startingPosition && endingPosition >= 0 ) {
-      this.endingPosition = endingPosition;
+  public void setEndPosition(int endPosition) {
+    if (endPosition < startPosition && endPosition >= 0 ) {
+      this.endPosition = endPosition;
     }
-    else throw new InvalidSnakeEndingPositionException(startingPosition, endingPosition);
+    else throw new InvalidSnakeEndPositionException(startPosition, endPosition);
   }
 }

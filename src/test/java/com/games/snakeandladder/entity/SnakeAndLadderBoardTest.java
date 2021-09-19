@@ -1,6 +1,6 @@
 package com.games.snakeandladder.entity;
 
-import com.games.snakeandladder.exception.InvalidSnakeStartingPositionException;
+import com.games.snakeandladder.exception.InvalidSnakeStartPositionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +23,8 @@ class SnakeAndLadderBoardTest {
   @Test
   void shouldAddSnakeToTheParticularCell() {
     Snake snake = new Snake();
-    snake.setStartingPosition(56);
-    snake.setEndingPosition(20);
+    snake.setStartPosition(56);
+    snake.setEndPosition(20);
     snakeAndLadderBoard.addSnake(snake);
     Snake actualSnake = snakeAndLadderBoard.getCell(56).getSnake();
     Assertions.assertEquals(snake, actualSnake);
@@ -33,17 +33,17 @@ class SnakeAndLadderBoardTest {
   @Test
   void shouldThrowExceptionWhenStartingPositionIsOutOfTheBoard() {
     Snake snake = new Snake();
-    snake.setStartingPosition(100);
-    snake.setEndingPosition(49);
-    Assertions.assertThrows(InvalidSnakeStartingPositionException.class,
+    snake.setStartPosition(100);
+    snake.setEndPosition(49);
+    Assertions.assertThrows(InvalidSnakeStartPositionException.class,
         () -> snakeAndLadderBoard.addSnake(snake));
   }
 
   @Test
   void shouldGetTheSnakeEndingPositionAsNewPositionAfterGoingThroughTheSnake() {
     Snake snake = new Snake();
-    snake.setStartingPosition(68);
-    snake.setEndingPosition(49);
+    snake.setStartPosition(68);
+    snake.setEndPosition(49);
     snakeAndLadderBoard.addSnake(snake);
     int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 64);
     Assertions.assertEquals(49, newPosition);
