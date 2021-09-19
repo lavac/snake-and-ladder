@@ -20,7 +20,9 @@ public class SnakeAndLadderGame {
   public void start() {
     while (!isGameOver()) {
       int diceRolledNumber = dice.roll();
-      int positionToBeMoved = board.getThePositionToBeMoved(diceRolledNumber, player.getCurrentPosition());
+      int positionToBeMoved = board.getThePositionToBeMoved(diceRolledNumber,
+          player.getCurrentPosition(),
+          player.getId());
       player.incrementNumberOfTurns();
       player.move(positionToBeMoved);
     }

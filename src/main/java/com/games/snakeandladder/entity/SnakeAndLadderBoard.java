@@ -2,6 +2,8 @@ package com.games.snakeandladder.entity;
 
 import com.games.snakeandladder.exception.InvalidSnakeStartPositionException;
 
+import java.util.UUID;
+
 public class SnakeAndLadderBoard {
   private int size;
   private Cell[] cells;
@@ -15,17 +17,21 @@ public class SnakeAndLadderBoard {
     }
   }
 
-  public int getThePositionToBeMoved(int rolledNumber, int currentPosition) {
+  public int getThePositionToBeMoved(int rolledNumber, int currentPosition, UUID id) {
     int positionToBeMoved = rolledNumber + currentPosition;
     Cell cellToBeMoved = getCell(positionToBeMoved);
-    return  (cellToBeMoved == null)
+    return (cellToBeMoved == null)
         ? currentPosition
-        : getTheUpdatedPositionAfterGoingThroughTheSnake(positionToBeMoved, cellToBeMoved);
+        : getTheUpdatedPositionAfterGoingThroughTheSnake(positionToBeMoved, cellToBeMoved, id);
   }
 
-  private int getTheUpdatedPositionAfterGoingThroughTheSnake(int positionToBeMoved, Cell cellToBeMoved) {
+  private int getTheUpdatedPositionAfterGoingThroughTheSnake(int positionToBeMoved, Cell cellToBeMoved, UUID playerId) {
     Snake snake = cellToBeMoved.getSnake();
-    return  (snake != null) ? snake.getEndPosition() : positionToBeMoved;
+    if (snake != null) {
+      System.out.printf("Player with Id:%s got bitten by snake at position %d%n",
+          playerId, snake.getStartPosition());
+      return snake.getEndPosition();
+    } else return positionToBeMoved;
   }
 
   public void addSnake(Snake snake) {

@@ -6,6 +6,8 @@ import com.games.snakeandladder.entity.SnakeAndLadderBoard;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
@@ -28,7 +30,9 @@ class SnakeAndLadderGameTest {
   void shouldTerminateTheGameWhenPlayerReachesTheLastPosition() {
     when(player.getNumberOfTurns()).thenReturn(5);
     when(player.getCurrentPosition()).thenReturn(99);
+
     game.start();
+
     Assertions.assertTrue(game.isGameOver());
   }
 
@@ -36,13 +40,15 @@ class SnakeAndLadderGameTest {
   void shouldUpdatePlayersPositionAfterRollingTheDice() {
     when(player.getNumberOfTurns()).thenReturn(9).thenReturn(10);
     when(player.getCurrentPosition()).thenReturn(26);
+    UUID uuid = UUID.randomUUID();
+    when(player.getId()).thenReturn(uuid);
     when(dice.roll()).thenReturn(4);
     when(player.getCurrentPosition()).thenReturn(20);
-    when(snakeAndLadderBoard.getThePositionToBeMoved(eq(4), eq(20))).thenReturn(24);
+    when(snakeAndLadderBoard.getThePositionToBeMoved(eq(4), eq(20), eq(uuid))).thenReturn(24);
 
     game.start();
 
-    verify(snakeAndLadderBoard).getThePositionToBeMoved(4, 20);
+    verify(snakeAndLadderBoard).getThePositionToBeMoved(4, 20, uuid);
     verify(player).move(24);
     }
 }
