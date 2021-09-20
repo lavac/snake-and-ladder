@@ -9,8 +9,9 @@ class CrookedDiceTest {
   CrookedDice crookedDice = new CrookedDice();
 
   @Test
-  void shouldReturnEvenNumberWhichIsNotGreaterThanSix() {
+  void shouldReturnEvenNumberWhichIsNotGreaterThanSixAndGreaterThanZero() {
     int roll = crookedDice.roll();
     assertEquals(roll % 2, 0);
+    assertTrue(roll<=6 && roll > 0);
   }
 }
