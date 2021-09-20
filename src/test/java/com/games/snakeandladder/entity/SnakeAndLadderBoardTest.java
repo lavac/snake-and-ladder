@@ -1,6 +1,5 @@
 package com.games.snakeandladder.entity;
 
-import com.games.snakeandladder.exception.InvalidSnakeStartPositionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -30,17 +29,6 @@ class SnakeAndLadderBoardTest {
     snakeAndLadderBoard.addSnake(snake);
     Snake actualSnake = snakeAndLadderBoard.getCell(56).getSnake();
     Assertions.assertEquals(snake, actualSnake);
-  }
-
-  @Test
-  void shouldThrowExceptionWhenStartingPositionIsOutOfTheBoard() {
-    Snake snake = new Snake();
-    snake.setStartPosition(100);
-    snake.setEndPosition(49);
-    InvalidSnakeStartPositionException exception = Assertions.assertThrows(InvalidSnakeStartPositionException.class,
-        () -> snakeAndLadderBoard.addSnake(snake));
-    Assertions.assertEquals("Error :- Invalid Snake's Start position:100," +
-        " it should be greater than zero and less than the board size:100", exception.getMessage());
   }
 
   @Test

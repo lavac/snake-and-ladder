@@ -1,7 +1,5 @@
 package com.games.snakeandladder.entity;
 
-import com.games.snakeandladder.exception.InvalidSnakeStartPositionException;
-
 import java.util.UUID;
 
 public class SnakeAndLadderBoard {
@@ -13,7 +11,7 @@ public class SnakeAndLadderBoard {
     cells = new Cell[size];
 
     for (int id =0; id < size; id++) {
-      cells[id] = new Cell(id);
+      cells[id] = new Cell(id+1);
     }
   }
 
@@ -36,15 +34,13 @@ public class SnakeAndLadderBoard {
 
   public void addSnake(Snake snake) {
     int startingPosition = snake.getStartPosition();
-      Cell cell = getCell(startingPosition);
+    Cell cell = getCell(startingPosition);
     if (cell != null) {
       cell.setSnake(snake);
-    } else {
-      throw new InvalidSnakeStartPositionException(startingPosition, size);
     }
   }
 
   public Cell getCell(int id) {
-    return  (id < size) ? cells[id]: null;
+    return  (id <= size) ? cells[id-1]: null;
   }
 }

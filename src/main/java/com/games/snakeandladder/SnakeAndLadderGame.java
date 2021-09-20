@@ -29,7 +29,7 @@ public class SnakeAndLadderGame {
   }
 
   public boolean isGameOver() {
-    if (player.getCurrentPosition() == DEFAULT_SIZE - 1) {
+    if (player.getCurrentPosition() == DEFAULT_SIZE) {
       System.out.printf("Player name:%s playerId:%s Won the game%n", player.getName(), player.getId());
       return true;
     }

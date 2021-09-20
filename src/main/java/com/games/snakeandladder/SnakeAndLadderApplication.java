@@ -14,7 +14,7 @@ public class SnakeAndLadderApplication {
     try {
       Scanner scanner = new Scanner(System.in);
 
-      System.out.println("Enter Snake's start position (from 1 to 99) and end position (less than start position)");
+      System.out.println("Enter Snake's start position (from 2 to 99) and end position (less than start position)");
       int startPosition = scanner.nextInt();
       int endPosition = scanner.nextInt();
 

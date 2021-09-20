@@ -29,7 +29,7 @@ class SnakeAndLadderGameTest {
   @Test
   void shouldTerminateTheGameWhenPlayerReachesTheLastPosition() {
     when(player.getNumberOfTurns()).thenReturn(5);
-    when(player.getCurrentPosition()).thenReturn(99);
+    when(player.getCurrentPosition()).thenReturn(100);
 
     game.start();
 
