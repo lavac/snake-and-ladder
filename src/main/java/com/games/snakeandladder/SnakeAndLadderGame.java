@@ -24,7 +24,7 @@ public class SnakeAndLadderGame {
           player.getCurrentPosition(),
           player.getId());
       player.incrementNumberOfTurns();
-      System.out.println("Player is moving to:" + positionToBeMoved);
+      System.out.printf("Player %s is moving to the cell %d%n", player.getId(), positionToBeMoved);
       player.move(positionToBeMoved);
     }
   }

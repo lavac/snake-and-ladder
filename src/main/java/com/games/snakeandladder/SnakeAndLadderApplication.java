@@ -3,6 +3,7 @@ package com.games.snakeandladder;
 import com.games.snakeandladder.entity.*;
 import com.games.snakeandladder.exception.*;
 
+import java.io.File;
 import java.util.Scanner;
 import static com.games.snakeandladder.Constants.DEFAULT_SIZE;
 import static com.games.snakeandladder.Constants.PLAYER_NAME;
@@ -11,32 +12,27 @@ public class SnakeAndLadderApplication {
 
   public static void main(String[] args) {
     try {
-      Scanner scanner = new Scanner(System.in);
-
+      File file = new File("src/main/java/com/games/snakeandladder/input/inputData.csv");
+      Scanner sc = new Scanner(file);
+      sc.useDelimiter(",");
       SnakeAndLadderBoard snakeAndLadderBoard = new SnakeAndLadderBoard(DEFAULT_SIZE);
 
-      System.out.println("How many snakes you want to add ");
-      int numberOfSnakes = scanner.nextInt();
+      int numberOfSnakes = sc.nextInt();
 
       for(int i=0; i < numberOfSnakes; i++) {
-        System.out.println("Enter Snake's start position (from 2 to 99) and end position (less than start position)");
-        int startPosition = scanner.nextInt();
-        int endPosition = scanner.nextInt();
-
+        int startPosition = sc.nextInt();
+        int endPosition = sc.nextInt();
         Snake snake = new Snake();
         snake.setStartPosition(startPosition);
         snake.setEndPosition(endPosition);
         snakeAndLadderBoard.addSnake(snake);
       }
 
-      System.out.println("How many Ladders you want to add ");
-      int numberOfLadders = scanner.nextInt();
+      int numberOfLadders = sc.nextInt();
 
       for(int i=0; i < numberOfLadders; i++) {
-        System.out.println("Enter Ladder's start position (from 2 to 99) and end position (greater than start position)" +
-            "and should not be greater than board size");
-        int startPosition = scanner.nextInt();
-        int endPosition = scanner.nextInt();
+        int startPosition = sc.nextInt();
+        int endPosition = sc.nextInt();
 
         Ladder ladder = new Ladder();
         ladder.setStartPosition(startPosition);
@@ -46,15 +42,16 @@ public class SnakeAndLadderApplication {
 
       Player player = new Player(PLAYER_NAME);
 
-      System.out.println("Enter Dice type: Valid values are Straight and Crooked");
-      String diceTypeInString = scanner.next();
+      String diceTypeInString = sc.next();
 
       DiceType diceType = DiceType.getDiceType(diceTypeInString);
       Dice dice = DiceFactory.get(diceType);
       SnakeAndLadderGame snakeAndLadderGame = new SnakeAndLadderGame(snakeAndLadderBoard, dice, player);
 
       snakeAndLadderGame.start();
-    } catch (InvalidSnakeStartPositionException
+      sc.close();
+    }
+    catch (InvalidSnakeStartPositionException
         | InvalidSnakeEndPositionException
         | InvalidDiceTypeException
         | InvalidLadderStartPositionException
