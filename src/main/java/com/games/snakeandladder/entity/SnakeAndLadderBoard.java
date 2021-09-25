@@ -32,35 +32,28 @@ public class SnakeAndLadderBoard {
 
   private int getTheUpdatedPositionAfterGoingThroughSnakeOrLadder(int positionToBeMoved, UUID playerId) {
     Cell cellToBeMoved = getCell(positionToBeMoved);
-    Snake snake = cellToBeMoved.getSnake();
-    Ladder ladder = cellToBeMoved.getLadder();
-    if (snake != null) {
-      System.out.printf("Player with Id:%s got bitten by snake at position %d so moving down to %d%n",
-          playerId, snake.getStartPosition(), snake.getEndPosition());
-      return snake.getEndPosition();
-    } else if (ladder != null) {
-      System.out.printf("Player with Id:%s got the ladder at position %d so moving up to %d%n",
-          playerId, ladder.getStartPosition(), ladder.getEndPosition());
-      return ladder.getEndPosition();
+    Obstacle obstacle = cellToBeMoved.getObstacle();
+    if (obstacle != null) {
+      if (!(obstacle instanceof Snake)) {
+        System.out.printf("Player with Id:%s got the ladder at position %d so moving up to %d%n",
+            playerId, obstacle.getStartPosition(), obstacle.getEndPosition());
+      } else {
+        System.out.printf("Player with Id:%s got bitten by snake at position %d so moving down to %d%n",
+            playerId, obstacle.getStartPosition(), obstacle.getEndPosition());
+      }
+      return obstacle.getEndPosition();
     }
     return positionToBeMoved;
   }
 
-  public void addSnake(Snake snake) {
-    int startingPosition = snake.getStartPosition();
+  public void addObstacle(Obstacle obstacle) {
+    int startingPosition = obstacle.getStartPosition();
     Cell cell = getCell(startingPosition);
     if (cell != null) {
-      cell.setSnake(snake);
+      cell.setObstacle(obstacle);
     }
   }
 
-  public void addLadder(Ladder ladder) {
-    int startingPosition = ladder.getStartPosition();
-    Cell cell = getCell(startingPosition);
-    if (cell != null) {
-      cell.setLadder(ladder);
-    }
-  }
 
   public Cell getCell(int id) {
     return  (id <= size) ? cells[id-1]: null;

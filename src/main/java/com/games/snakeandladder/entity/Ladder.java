@@ -7,9 +7,7 @@ import lombok.Data;
 import static com.games.snakeandladder.Constants.DEFAULT_SIZE;
 
 @Data
-public class Ladder {
-  private int startPosition;
-  private int endPosition;
+public class Ladder extends Obstacle {
 
   public void setStartPosition(int startPosition) {
     if (startPosition > 1 && startPosition < DEFAULT_SIZE) {

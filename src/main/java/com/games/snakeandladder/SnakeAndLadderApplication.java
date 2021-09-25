@@ -22,10 +22,10 @@ public class SnakeAndLadderApplication {
       for(int i=0; i < numberOfSnakes; i++) {
         int startPosition = sc.nextInt();
         int endPosition = sc.nextInt();
-        Snake snake = new Snake();
+        Obstacle snake = new Snake();
         snake.setStartPosition(startPosition);
         snake.setEndPosition(endPosition);
-        snakeAndLadderBoard.addSnake(snake);
+        snakeAndLadderBoard.addObstacle(snake);
       }
 
       int numberOfLadders = sc.nextInt();
@@ -34,10 +34,10 @@ public class SnakeAndLadderApplication {
         int startPosition = sc.nextInt();
         int endPosition = sc.nextInt();
 
-        Ladder ladder = new Ladder();
+        Obstacle ladder = new Ladder();
         ladder.setStartPosition(startPosition);
         ladder.setEndPosition(endPosition);
-        snakeAndLadderBoard.addLadder(ladder);
+        snakeAndLadderBoard.addObstacle(ladder);
       }
 
       Player player = new Player(PLAYER_NAME);

@@ -7,7 +7,7 @@ import lombok.Data;
 import static com.games.snakeandladder.Constants.DEFAULT_SIZE;
 
 @Data
-public class Snake {
+public class Snake extends Obstacle {
   private int startPosition;
   private int endPosition;
 
