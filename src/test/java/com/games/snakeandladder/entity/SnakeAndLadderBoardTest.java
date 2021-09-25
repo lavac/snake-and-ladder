@@ -68,6 +68,16 @@ class SnakeAndLadderBoardTest {
   }
 
   @Test
+  void shouldGetThLadderEndingPositionAsNewPositionAfterGoingThroughTheLadder() {
+    Ladder ladder = new Ladder();
+    ladder.setStartPosition(30);
+    ladder.setEndPosition(60);
+    snakeAndLadderBoard.addLadder(ladder);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 26, UUID.randomUUID());
+    Assertions.assertEquals(60, newPosition);
+  }
+
+  @Test
   void shouldBeAbleToAddMoreSnakesToTheBoard() {
     Snake snake1 = new Snake();
     snake1.setStartPosition(56);
@@ -95,6 +105,20 @@ class SnakeAndLadderBoardTest {
     snakeAndLadderBoard.addSnake(snake2);
     Snake actualSnake2 = snakeAndLadderBoard.getCell(56).getSnake();
     Assertions.assertEquals(snake2, actualSnake2);
+  }
+
+  @Test
+  void shouldReplaceTheExistingLadderWhenNewLadderIsAddedToTheSameCell() {
+    Ladder ladder1 = new Ladder();
+    ladder1.setStartPosition(20);
+    ladder1.setEndPosition(56);
+    Ladder ladder2 = new Ladder();
+    ladder2.setStartPosition(20);
+    ladder2.setEndPosition(78);
+    snakeAndLadderBoard.addLadder(ladder1);
+    snakeAndLadderBoard.addLadder(ladder2);
+    Ladder actualLadder2 = snakeAndLadderBoard.getCell(20).getLadder();
+    Assertions.assertEquals(ladder2, actualLadder2);
   }
 
   @Test
@@ -131,5 +155,41 @@ class SnakeAndLadderBoardTest {
     snakeAndLadderBoard.addSnake(snake3);
     int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 64, UUID.randomUUID());
     Assertions.assertEquals(23, newPosition);
+  }
+
+  @Test
+  void shouldGetTheUpdatedPositionAfterGoingThroughMultipleLaddersBackToBack() {
+    Ladder ladder1 = new Ladder();
+    ladder1.setStartPosition(49);
+    ladder1.setEndPosition(68);
+    Ladder ladder2 = new Ladder();
+    ladder2.setStartPosition(68);
+    ladder2.setEndPosition(74);
+    Ladder ladder3 = new Ladder();
+    ladder3.setStartPosition(74);
+    ladder3.setEndPosition(100);
+    snakeAndLadderBoard.addLadder(ladder1);
+    snakeAndLadderBoard.addLadder(ladder2);
+    snakeAndLadderBoard.addLadder(ladder3);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 45, UUID.randomUUID());
+    Assertions.assertEquals(100, newPosition);
+  }
+
+  @Test
+  void shouldGetTheUpdatedPositionAfterGoingThroughBothLaddersAndSnakesBackToBack() {
+    Ladder ladder1 = new Ladder();
+    ladder1.setStartPosition(49);
+    ladder1.setEndPosition(68);
+    Ladder ladder2 = new Ladder();
+    ladder2.setStartPosition(68);
+    ladder2.setEndPosition(74);
+    Snake snake1 = new Snake();
+    snake1.setStartPosition(74);
+    snake1.setEndPosition(34);
+    snakeAndLadderBoard.addLadder(ladder1);
+    snakeAndLadderBoard.addLadder(ladder2);
+    snakeAndLadderBoard.addSnake(snake1);
+    int newPosition = snakeAndLadderBoard.getThePositionToBeMoved(4, 45, UUID.randomUUID());
+    Assertions.assertEquals(34, newPosition);
   }
 }

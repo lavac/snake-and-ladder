@@ -24,6 +24,7 @@ public class SnakeAndLadderGame {
           player.getCurrentPosition(),
           player.getId());
       player.incrementNumberOfTurns();
+      System.out.println("Player is moving to:" + positionToBeMoved);
       player.move(positionToBeMoved);
     }
   }

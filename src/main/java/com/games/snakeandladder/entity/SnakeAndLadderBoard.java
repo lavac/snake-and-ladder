@@ -24,20 +24,26 @@ public class SnakeAndLadderBoard {
       int updatedPosition = positionToBeMoved;
       do {
         positionToBeMoved = updatedPosition;
-        updatedPosition = getTheUpdatedPositionAfterGoingThroughTheSnake(positionToBeMoved, playerId);
+        updatedPosition = getTheUpdatedPositionAfterGoingThroughSnakeOrLadder(positionToBeMoved, playerId);
       } while (positionToBeMoved != updatedPosition);
       return updatedPosition;
     }
   }
 
-  private int getTheUpdatedPositionAfterGoingThroughTheSnake(int positionToBeMoved, UUID playerId) {
+  private int getTheUpdatedPositionAfterGoingThroughSnakeOrLadder(int positionToBeMoved, UUID playerId) {
     Cell cellToBeMoved = getCell(positionToBeMoved);
     Snake snake = cellToBeMoved.getSnake();
+    Ladder ladder = cellToBeMoved.getLadder();
     if (snake != null) {
-      System.out.printf("Player with Id:%s got bitten by snake at position %d%n",
-          playerId, snake.getStartPosition());
+      System.out.printf("Player with Id:%s got bitten by snake at position %d so moving down to %d%n",
+          playerId, snake.getStartPosition(), snake.getEndPosition());
       return snake.getEndPosition();
-    } else return positionToBeMoved;
+    } else if (ladder != null) {
+      System.out.printf("Player with Id:%s got the ladder at position %d so moving up to %d%n",
+          playerId, ladder.getStartPosition(), ladder.getEndPosition());
+      return ladder.getEndPosition();
+    }
+    return positionToBeMoved;
   }
 
   public void addSnake(Snake snake) {
