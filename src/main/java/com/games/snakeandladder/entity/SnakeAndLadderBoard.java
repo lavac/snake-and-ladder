@@ -15,15 +15,23 @@ public class SnakeAndLadderBoard {
     }
   }
 
-  public int getThePositionToBeMoved(int rolledNumber, int currentPosition, UUID id) {
+  public int getThePositionToBeMoved(int rolledNumber, int currentPosition, UUID playerId) {
     int positionToBeMoved = rolledNumber + currentPosition;
-    Cell cellToBeMoved = getCell(positionToBeMoved);
-    return (cellToBeMoved == null)
-        ? currentPosition
-        : getTheUpdatedPositionAfterGoingThroughTheSnake(positionToBeMoved, cellToBeMoved, id);
+    if (positionToBeMoved > size) {
+      return currentPosition;
+    }
+    else {
+      int updatedPosition = positionToBeMoved;
+      do {
+        positionToBeMoved = updatedPosition;
+        updatedPosition = getTheUpdatedPositionAfterGoingThroughTheSnake(positionToBeMoved, playerId);
+      } while (positionToBeMoved != updatedPosition);
+      return updatedPosition;
+    }
   }
 
-  private int getTheUpdatedPositionAfterGoingThroughTheSnake(int positionToBeMoved, Cell cellToBeMoved, UUID playerId) {
+  private int getTheUpdatedPositionAfterGoingThroughTheSnake(int positionToBeMoved, UUID playerId) {
+    Cell cellToBeMoved = getCell(positionToBeMoved);
     Snake snake = cellToBeMoved.getSnake();
     if (snake != null) {
       System.out.printf("Player with Id:%s got bitten by snake at position %d%n",

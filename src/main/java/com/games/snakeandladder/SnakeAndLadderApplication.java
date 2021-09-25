@@ -14,15 +14,20 @@ public class SnakeAndLadderApplication {
     try {
       Scanner scanner = new Scanner(System.in);
 
-      System.out.println("Enter Snake's start position (from 2 to 99) and end position (less than start position)");
-      int startPosition = scanner.nextInt();
-      int endPosition = scanner.nextInt();
-
-      Snake snake = new Snake();
-      snake.setStartPosition(startPosition);
-      snake.setEndPosition(endPosition);
       SnakeAndLadderBoard snakeAndLadderBoard = new SnakeAndLadderBoard(DEFAULT_SIZE);
-      snakeAndLadderBoard.addSnake(snake);
+
+      System.out.println("How many snakes you want to add ");
+      int numberOfSnakes = scanner.nextInt();
+      for(int i=0; i < numberOfSnakes; i++) {
+        System.out.println("Enter Snake's start position (from 2 to 99) and end position (less than start position)");
+        int startPosition = scanner.nextInt();
+        int endPosition = scanner.nextInt();
+
+        Snake snake = new Snake();
+        snake.setStartPosition(startPosition);
+        snake.setEndPosition(endPosition);
+        snakeAndLadderBoard.addSnake(snake);
+      }
       Player player = new Player(PLAYER_NAME);
 
       System.out.println("Enter Dice type: Valid values are Straight and Crooked");
