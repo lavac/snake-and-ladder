@@ -48,6 +48,14 @@ public class SnakeAndLadderBoard {
     }
   }
 
+  public void addLadder(Ladder ladder) {
+    int startingPosition = ladder.getStartPosition();
+    Cell cell = getCell(startingPosition);
+    if (cell != null) {
+      cell.setLadder(ladder);
+    }
+  }
+
   public Cell getCell(int id) {
     return  (id <= size) ? cells[id-1]: null;
   }

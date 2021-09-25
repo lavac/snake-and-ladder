@@ -6,6 +6,7 @@ import lombok.Data;
 public class Cell {
   private int id;
   private Snake snake;
+  private Ladder ladder;
 
   public Cell(int id) {
     this.id = id;

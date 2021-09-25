@@ -11,14 +11,14 @@ public class Ladder {
   private int startPosition;
   private int endPosition;
 
-  public void setStartPosition(int startPosition) throws InvalidLadderStartPositionException {
+  public void setStartPosition(int startPosition) {
     if (startPosition > 1 && startPosition < DEFAULT_SIZE) {
       this.startPosition = startPosition;
     }
     else throw new InvalidLadderStartPositionException(startPosition, DEFAULT_SIZE);
   }
 
-  public void setEndPosition(int endPosition) throws InvalidLadderEndPositionException {
+  public void setEndPosition(int endPosition) {
     if (endPosition > startPosition && endPosition <= DEFAULT_SIZE ) {
       this.endPosition = endPosition;
     }

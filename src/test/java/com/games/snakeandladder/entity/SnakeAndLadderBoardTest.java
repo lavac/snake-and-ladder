@@ -32,6 +32,32 @@ class SnakeAndLadderBoardTest {
   }
 
   @Test
+  void shouldAddLadderToTheParticularCell() {
+    Ladder ladder = new Ladder();
+    ladder.setStartPosition(56);
+    ladder.setEndPosition(78);
+    snakeAndLadderBoard.addLadder(ladder);
+    Ladder actualLadder = snakeAndLadderBoard.getCell(56).getLadder();
+    Assertions.assertEquals(ladder, actualLadder);
+  }
+
+  @Test
+  void shouldBeAbleToAddMoreLaddersToTheBoard() {
+    Ladder ladder1 = new Ladder();
+    ladder1.setStartPosition(56);
+    ladder1.setEndPosition(76);
+    Ladder ladder2 = new Ladder();
+    ladder2.setStartPosition(46);
+    ladder2.setEndPosition(68);
+    snakeAndLadderBoard.addLadder(ladder1);
+    snakeAndLadderBoard.addLadder(ladder2);
+    Ladder actualLadder1 = snakeAndLadderBoard.getCell(56).getLadder();
+    Ladder actualLadder2 = snakeAndLadderBoard.getCell(46).getLadder();
+    Assertions.assertEquals(ladder1, actualLadder1);
+    Assertions.assertEquals(ladder2, actualLadder2);
+  }
+
+  @Test
   void shouldGetTheSnakeEndingPositionAsNewPositionAfterGoingThroughTheSnake() {
     Snake snake = new Snake();
     snake.setStartPosition(68);
