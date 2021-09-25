@@ -3,10 +3,12 @@ package com.games.snakeandladder.entity;
 import com.games.snakeandladder.exception.InvalidSnakeEndPositionException;
 import com.games.snakeandladder.exception.InvalidSnakeStartPositionException;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import static com.games.snakeandladder.Constants.DEFAULT_SIZE;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class Snake extends Obstacle {
   private int startPosition;
   private int endPosition;

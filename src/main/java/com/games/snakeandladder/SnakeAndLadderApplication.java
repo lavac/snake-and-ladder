@@ -51,11 +51,7 @@ public class SnakeAndLadderApplication {
       snakeAndLadderGame.start();
       sc.close();
     }
-    catch (InvalidSnakeStartPositionException
-        | InvalidSnakeEndPositionException
-        | InvalidDiceTypeException
-        | InvalidLadderStartPositionException
-        | InvalidLadderEndPositionException exception) {
+    catch (InvalidObstaclePositionException | InvalidDiceTypeException exception) {
       System.out.println(exception.getMessage());
     } catch (Exception ex) {
       System.out.println("Unexpected error occurred with message: " + ex.getMessage());
