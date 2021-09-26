@@ -35,10 +35,10 @@ public class SnakeAndLadderBoard {
     Obstacle obstacle = cellToBeMoved.getObstacle();
     if (obstacle != null) {
       if (!(obstacle instanceof Snake)) {
-        System.out.printf("Player with Id:%s got the ladder at position %d so moving up to %d%n",
+        System.out.printf("Player with Id:%s got the ladder at position %d, hence moving up to %d%n",
             playerId, obstacle.getStartPosition(), obstacle.getEndPosition());
       } else {
-        System.out.printf("Player with Id:%s got bitten by snake at position %d so moving down to %d%n",
+        System.out.printf("Player with Id:%s got bitten by snake at position %d, hence moving down to %d%n",
             playerId, obstacle.getStartPosition(), obstacle.getEndPosition());
       }
       return obstacle.getEndPosition();

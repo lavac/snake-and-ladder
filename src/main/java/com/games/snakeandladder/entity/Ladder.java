@@ -22,6 +22,6 @@ public class Ladder extends Obstacle {
     if (endPosition > startPosition && endPosition <= DEFAULT_SIZE ) {
       this.endPosition = endPosition;
     }
-    else throw new InvalidLadderEndPositionException(startPosition, endPosition);
+    else throw new InvalidLadderEndPositionException(startPosition, endPosition, DEFAULT_SIZE);
   }
 }
